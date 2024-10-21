@@ -2,6 +2,7 @@ namespace CQRS.Domain;
 
 public class Proizvod
 {
+    public static bool IsCached { get; set; }
     public Guid Id { get; set; }
     public string Naziv { get; set; } = default!;
     public string Opis { get; set; } = default!;

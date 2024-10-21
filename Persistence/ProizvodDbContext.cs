@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CQRS.Persistence;
 
-public class ProizvodDbContext : DbContext
+public sealed class ProizvodDbContext : DbContext
 {
     public ProizvodDbContext(DbContextOptions<ProizvodDbContext> options) : base(options)
     {
         Database.EnsureCreated();
     }
-    public DbSet<Proizvod> Proizvodi { get; set; }
+    public DbSet<Proizvod> Proizvodi { get; init; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Proizvod>().HasKey(p => p.Id);

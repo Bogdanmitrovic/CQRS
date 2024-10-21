@@ -8,6 +8,9 @@ public class CreateProizvodHandler(ProizvodDbContext context) : IRequestHandler<
 {
     public async Task<Guid> Handle(CreateProizvod command, CancellationToken cancellationToken)
     {
+        Proizvod.IsCached = false;
+        var millisecondsRandom = new Random().Next(0, 200);
+        await Task.Delay(millisecondsRandom, cancellationToken);
         var product = new Proizvod(command.Naziv, command.Opis, command.Cena);
         await context.Proizvodi.AddAsync(product, cancellationToken);
         await context.SaveChangesAsync(cancellationToken);

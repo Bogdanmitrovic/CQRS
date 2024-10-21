@@ -58,7 +58,4 @@ app.MapDelete("/proizvodi/{id:guid}", async (Guid id, ISender mediatr) =>
     return Results.NoContent();
 });
 
-
-app.UseHttpsRedirection();
-
 app.Run();
